@@ -1,11 +1,11 @@
 const playerImg = document.createElement('img');
 playerImg.src = '/images/player.png'
 
-class Car {
+class Player {
 
     constructor(canvasContext, positionX, positionY){
         this.ctx = canvasContext,
-        this.image = carImg,
+        this.image = playerImg,
         this.x = positionX,
         this.y = positionY,
         this.width = 50,

@@ -8,19 +8,48 @@ window.onload = () => {
 	//We create instances of the classes we want to paint in the canvas
 	//using the information we decided on their constructors
 	const background = new Background(ctx);
-	const car = new Car(ctx, canvas.width / 2 - 25, canvas.height - 110);
-
-	//create an array to store obstacles
-	const obstaclesArray = [];
-
-	const score = {
-		points: 0,
-		draw: function () {
-			ctx.font = '30px Arial';
-			ctx.fillStyle = 'black';
-			ctx.fillText('Score: ' + this.points, 200, 50);
-		}
-	};
+	
 
 	
+
+    //This is where the game logic happens
+    function gameLoop() {
+	//0- Create a loop to animate the game
+	frameId = requestAnimationFrame(gameLoop);
+
+	//Check if the game is working with a console log
+	console.log('Game Started');
+
+	//1- Clear the canvas
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	//2- paint the objects
+	background.draw();
+	
+
+}
+
+//Start the game when we click on the start button
+document.getElementById('start-button').onclick = () => {
+	gameLoop();
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 };
