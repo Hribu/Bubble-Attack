@@ -9,12 +9,12 @@ body h1 {
 
 body button {
   font-size: 20px;
-  background-color: black;
+  background-color: rgba(31, 1, 1, 0.685);
   color: #fff;
   padding: 10px 20px;
   border: 0;
   box-shadow: 0;
-  border-radius: 5px;
+  border-radius: 20px;
   margin-bottom: 20px;
 }
 
