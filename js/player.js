@@ -13,6 +13,6 @@ class Car {
     }
 
     draw(){
-        this.ctx.drawImage(carImg, this.x, this.y, this.width, this.height);
+        this.ctx.drawImage(playerImg, this.x, this.y, this.width, this.height);
     }
 }
