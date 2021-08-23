@@ -1,5 +1,5 @@
 const bgImg = document.createElement('img');
-bgImg.src = '../images/road.png';
+bgImg.src = '../images/lake.png';
 
 class Background {
     constructor( canvasContext ){

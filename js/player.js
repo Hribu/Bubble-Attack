@@ -1,5 +1,5 @@
-const carImg = document.createElement('img');
-carImg.src = '/images/car.png'
+const playerImg = document.createElement('img');
+playerImg.src = '/images/player.png'
 
 class Car {
 

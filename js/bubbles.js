@@ -1,4 +1,4 @@
-class Obstacle {
+class Bublles {
 	constructor(canvasContext, positionX, positionY, width, height, speed) {
 		(this.ctx = canvasContext),
 			(this.x = positionX),
@@ -11,7 +11,7 @@ class Obstacle {
 
 	draw() {
 		this.ctx.fillStyle = this.color;
-		this.ctx.fillRect(this.x, this.y, this.width, this.height);
+		this.ctx.arc(100, 100, 10, 0, Math.PI*2);
 	}
 
 	move() {
