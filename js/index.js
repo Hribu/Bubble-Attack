@@ -29,6 +29,8 @@ window.onload = () => {
 	player.draw();
 	
 
+	
+
 }
 
 //Start the game when we click on the start button
@@ -47,7 +49,25 @@ document.getElementById('start-button').onclick = () => {
 
 
 
+//Add an event listener to move the car with the arrow keys
+	//Keyboard events checker => https://keycode.info/
 
+	window.addEventListener('keydown', movePlayer);
+
+	function movePlayer(event) {
+		switch (event.keyCode) {
+			case 37:
+				if (player.x > 0) player.x -= 15;
+				break;
+
+			case 39:
+				if (player.x < canvas.width - player.width) player.x += 15;
+				break;
+
+			default:
+				break;
+		}
+	}
 
 
 
