@@ -1,15 +1,15 @@
 
 const bubbleImg = document.createElement('img');
-bubbleImg.src = '/images/bubble150.png';
+bubbleImg.src = '/images/bubble.png';
 
 class Bubbles {
-	constructor(canvasContext) {
+	constructor(canvasContext,positionY, speed) {
 	  this.x = Math.floor(Math.random() * canvas.width + 1);
 	  this.ctx = canvasContext
 	  this.width = 70;
 	  this.height = 70;
-	  this.speed = 1.5 
-	  this.y = this.height;
+	  this.speed = speed;
+	  this.y = positionY;
 	  this.directionX = Math.random() * 6 - 3;
 	  this.directionY = 1;
 	  this.score = 5;
@@ -21,14 +21,22 @@ class Bubbles {
 	};
   
 	//move bubble
-   	/*move = () => {
+
+
+	move() {
+		this.y += 5;
+	}
+
+
+	
+    /*move = () => {
 	  this.y += this.speed * this.directionY;
 	  this.x += this.speed * this.directionX;
 	};
   
 	//collisions
   
-	wallCollision = () => {
+		wallCollision = () => {
 	  if (this.x > canvas.width - this.width) {
 		this.directionX *= -1;
 	  }

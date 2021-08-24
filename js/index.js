@@ -11,7 +11,7 @@ window.onload = () => {
 	const background = new Background(ctx);
 	const player = new Player(ctx, canvas.width / 2 - 25, canvas.height - 110);
 	//const laser =  new Laser(this.player, this.fps);
-	const bubbles = new Bubbles(ctx);
+	//const bubbles = new Bubbles(ctx);
 	
 	
 
@@ -22,27 +22,19 @@ window.onload = () => {
 //create an array to store bubble
    const bubblesArray = [];
 
-      /* //SPAWNING Bubbles
-   spawnBubble = () => {
-    this.bubblesArray.push(new Bubbles());
-  };
-  console.log(bubblesArray);
+     //SPAWNING Bubbles
 
-	//create an interval to keep adding Bubbles  to the array  from race car
+	//create an interval to keep adding Bubbles  to the array  
 	bubbleId = setInterval(function () {
 		let bubble = new Bubbles(
 			ctx, //canvas context
-			Math.random() * canvas.width - 200, //position X
-			0, //position Y
-			Math.random() * 50 + 100, //width
-			Math.random() * 15 + 10, //height
-			Math.ceil(Math.random() * 3) //speed   
+			Math.ceil(Math.random() * 1.5) //speed   
 		);
 
 		
 
 		bubblesArray.push(bubble);
-	}, 8000); */
+	}, 2000); 
 
     //This is where the game logic happens
     function gameLoop() {
@@ -58,7 +50,7 @@ window.onload = () => {
 	//2- paint the objects
 	background.draw();
 	player.draw();
-	bubbles.draw();
+	
 	
 
 	
@@ -67,6 +59,7 @@ window.onload = () => {
 bubblesArray.forEach((eachBubble) => {
 	eachBubble.draw();
 	eachBubble.move();
+	console.log('this is the each bubble', eachBubble)
 	
 });
 	
