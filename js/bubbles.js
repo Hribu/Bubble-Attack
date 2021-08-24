@@ -1,37 +1,46 @@
 
 const bubbleImg = document.createElement('img');
-bubbleImg.src = '/images/bubble300.png'
+bubbleImg.src = '/images/bubble150.png';
 
-
-
-class Bublles {
-	constructor(canvasContext, positionX, positionY, width, height, speed) {
-		    this.ctx = canvasContext,
-			this.x = positionX,
-			this.y = positionY,
-			this.width = width,
-			this.height = height,
-			this.color = 'black';
-            this.speed = speed
+class Bubbles {
+	constructor(canvasContext) {
+	  this.x = Math.floor(Math.random() * canvas.width + 1);
+	  this.ctx = canvasContext
+	  this.width = 70;
+	  this.height = 70;
+	  this.speed = 1.5 
+	  this.y = this.height;
+	  this.directionX = Math.random() * 6 - 3;
+	  this.directionY = 1;
+	  this.score = 5;
 	}
-
-
-
-	draw(){
-        this.ctx.drawImage(bubbleImg, this.x, this.y, this.width, this.height);
-    }  
-
-
-
-	/*draw() {
-	this.ctx.fillStyle = this.color;
-	this.ctx.arc(100, 100, 10, 0, Math.PI*2);
-} */
-
-	move() {
-		this.y += this.speed;
-	}
-}
-
-
-
+  
+	//draw the bubble
+	draw= () => {
+	  this.ctx.drawImage(bubbleImg, this.x, this.y, this.width, this.height);
+	};
+  
+	//move bubble
+   	/*move = () => {
+	  this.y += this.speed * this.directionY;
+	  this.x += this.speed * this.directionX;
+	};
+  
+	//collisions
+  
+	wallCollision = () => {
+	  if (this.x > canvas.width - this.width) {
+		this.directionX *= -1;
+	  }
+	  if (this.y > canvas.height - this.height) {
+		this.directionY *= -1;
+	  }
+	  if (this.x < 0) {
+		this.directionX *= -1;
+	  }
+	  if (this.y < 0) {
+		this.directionY *= -1;
+	  }
+	}; */
+  }
+  
