@@ -9,6 +9,8 @@ window.onload = () => {
 	//using the information we decided on their constructors
 	const background = new Background(ctx);
 	const player = new Player(ctx, canvas.width / 2 - 25, canvas.height - 110);
+	//const laser=  new Laser(this.spaceShip, this.laserSide, this.fps);
+	
 	
 
 	
@@ -28,6 +30,7 @@ window.onload = () => {
 	background.draw();
 	player.draw();
 	
+	
 
 	
 
@@ -39,17 +42,7 @@ document.getElementById('start-button').onclick = () => {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-//Add an event listener to move the car with the arrow keys
+//Add an event listener to move the player with the arrow keys
 	//Keyboard events checker => https://keycode.info/
 
 	window.addEventListener('keydown', movePlayer);
@@ -64,10 +57,37 @@ document.getElementById('start-button').onclick = () => {
 				if (player.x < canvas.width - player.width) player.x += 15;
 				break;
 
-			default:
+			default:g
 				break;
 		}
 	}
+
+
+
+
+	//Add an event listener to shoot 
+	//Keyboard events checker => https://keycode.info/
+
+	window.addEventListener('keydown', shoot);
+
+	function shoot(event) {
+		switch (event.keyCode) {
+			case 32:
+				laser.speed = 15;
+				break;
+			default:g
+				break;
+		}
+	}
+
+
+
+
+
+
+
+
+
 
 
 
