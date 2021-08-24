@@ -1,42 +1,51 @@
+
 body {
+  padding: 0;
   text-align: center;
 }
 
-body h1 {
-  font-size: 30px;
-  text-transform: uppercase;
+.game-intro {
+  float: left;
+  padding: 0% 0%;
+}
+
+.game-intro p {
+  font-size: 16px;
+  font-family: "Verdana"
+}
+
+.logo-img {
+  width: 200px;
+  padding: 20px 0px
+}
+
+.arrows-img {
+  width: 150px;
 }
 
 body button {
-  font-size: 20px;
-  background-color: rgba(31, 1, 1, 0.685);
+  font-size: 30px;
+  background-color: #870007;
   color: #fff;
-  padding: 10px 20px;
+  padding: 20px 40px;
   border: 0;
   box-shadow: 0;
   border-radius: 20px;
   margin-bottom: 20px;
 }
 
-#my-canvas {
-  border: 1px solid black;
-}
-
-
-@keyframes ani {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 100vw 0;
-  }
+#game-board {
+    float: right;
+    padding: 0px 0px;
 }
 
 canvas {
-  background: url('/images/bg.png') repeat-x 0 / 100% auto;
-  height: 500px;
-  /* this value is not important, just not zero */
-  animation: ani 10s linear infinite;
-  animation-direction: reverse;
+  float: center;
+}
+
+#canvas {
+  border-radius: 30px;
+  border: 8px solid white;
+  margin: 10px 50px 10px 10px;
+  padding: 0
 }

@@ -8,6 +8,7 @@ window.onload = () => {
 	//We create instances of the classes we want to paint in the canvas
 	//using the information we decided on their constructors
 	const background = new Background(ctx);
+	const player = new Player(ctx, canvas.width / 2 - 25, canvas.height - 110);
 	
 
 	
@@ -25,6 +26,7 @@ window.onload = () => {
 
 	//2- paint the objects
 	background.draw();
+	player.draw();
 	
 
 }
