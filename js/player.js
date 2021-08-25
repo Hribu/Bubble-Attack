@@ -1,5 +1,5 @@
 const playerImg = document.createElement('img');
-playerImg.src = '/images/player.png'
+playerImg.src = './images/player.png'
 
 class Player {
 

@@ -70,6 +70,7 @@ bubblesArray.forEach((eachBubble) => {
 	eachBubble.draw();
 	eachBubble.move();
 	checkCollision(player, eachBubble)
+	checkCollisionLaser()
 	
     //console.log('this is the each bubble', eachBubble)
 });
@@ -78,6 +79,7 @@ bubblesArray.forEach((eachBubble) => {
 laserArray.forEach((eachLaser) => {
 	eachLaser.drawLaser();
 	eachLaser.moveLaser();
+	
 	
 });
 } // Game loop ends here -------------------------------------------------------------------------------------
@@ -90,16 +92,16 @@ function checkCollisionLaser(){
 			 
 			 if(laserArray[j].y <= bubblesArray[i].y + bubbleImg.height && laserArray[j].y >= bubblesArray[i].y){
 				 if( (laserArray[j].x >= bubblesArray[i].x && laserArray[j].x <= bubblesArray[i].x + bubbleImg.width) || (laserArray[j].x >= bubblesArray[i].x && laserArray[j]  <= bubblesArray[i].x + bubbleImg.width) ){
-					 score.points +=10;
+					 //score.points +=10;
 					 bubblesArray.splice(i, 1);
 					 
-					 laserArray.splice(j, 1);
+					 //laserArray.splice(j, 1);
 				 }
 			 }
 		 }
 	 }
  } 
- Collapse
+
  
  
 

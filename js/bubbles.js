@@ -24,7 +24,7 @@ class Bubbles {
 
 
 	move() {
-		this.y += 5;
+		this.y += 3;
 	}
 
 
