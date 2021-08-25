@@ -17,13 +17,13 @@ window.onload = () => {
 	
 
 
-//create an array to store bubble
+//create an arrays to store bubbles and lasers 
    const bubblesArray = [];
    const laserArray = [];
 
-     //SPAWNING Bubbles
+     
 
-	//create an interval to keep adding Bubbles  to the array  
+	
 	bubbleId = setInterval(function () {
 		let bubble = new Bubbles(
 			ctx, //canvas context
@@ -39,13 +39,15 @@ window.onload = () => {
 	laserArray.push(laser)
 	}
 
-	const gameStarted = true // You should wrtie logic and put this under the start butto on-click Event
+	const gameStarted = true // You should write logic and put this under the start button on-click Event
 
-    //This is where the game logic happens
+    //This is where the game logic happens-------------------------------------------------------------
 
     function gameLoop() {
+  
 
-
+//SPAWNING Bubbles		
+//create an interval to keep adding Bubbles  to the array  
 	if(!bubbleId && gameStarted){
 		bubbleId = setInterval(function () {
 			let bubble = new Bubbles(
@@ -53,7 +55,7 @@ window.onload = () => {
 				Math.ceil(Math.random() * 1.5) //speed   
 			);
 			bubblesArray.push(bubble);
-		}, 2000); }
+		}, 3000); }
 
 
 	//0- Create a loop to animate the game
