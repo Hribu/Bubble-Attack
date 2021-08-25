@@ -11,8 +11,6 @@ window.onload = () => {
 	//using the information we decided on their constructors
 	const background = new Background(ctx);
 	const player = new Player(ctx, canvas.width / 2 - 25, canvas.height - 110);
-	 
-	
 	let collision = false
 	
 
@@ -56,7 +54,7 @@ window.onload = () => {
 	frameId = requestAnimationFrame(gameLoop);
 
 	//Check if the game is working with a console log
-	console.log('Game Started');
+	//console.log('Game Started');
 
 	//1- Clear the canvas
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -96,7 +94,6 @@ function checkCollisionLaser(){
 					 //score.points +=10;
 					 console.log( )
 					 bubblesArray.splice(i, 1);
-					 
 					 laserArray.splice(j, 1);
 				 }
 			 }
@@ -140,9 +137,9 @@ function checkCollision (player, bubble) {
     if (collision) {
         clearInterval(frameId);
         clearInterval(bubbleId);
-        //alert("Game Over");
+        alert("Bubbles have destroyed the city!");
 		gameStarted = !gameStarted;
-        //window.location.reload();
+       // window.location.reload();
       }
 }
 
@@ -161,7 +158,7 @@ document.getElementById('start-button').onclick = () => {
 	window.addEventListener('keydown', movePlayer);
 
 	function movePlayer(event) {
-		
+		event.preventDefault();
 		switch (event.keyCode) {
 			case 37:
 				if (player.x > 0) player.x -= 15;
@@ -172,6 +169,7 @@ document.getElementById('start-button').onclick = () => {
 				break;
 
 			case 87:
+				
 				if (event.repeat) {
 					break;
 				}
