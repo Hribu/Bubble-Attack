@@ -11,7 +11,7 @@ window.onload = () => {
 	//using the information we decided on their constructors
 	const background = new Background(ctx);
 	const player = new Player(ctx, canvas.width / 2 - 25, canvas.height - 110);
-	
+	 
 	
 	let collision = false
 	
@@ -24,7 +24,10 @@ window.onload = () => {
      
 
 	
-	
+	     /*let createLasers = () => { 
+			let laser = new Laser(player, ctx);
+			laserArray.push(laser)
+		 }*/
 
 	//create laser bullets 
 
@@ -38,8 +41,6 @@ window.onload = () => {
     //This is where the game logic happens-- Game loop starts here -----------------------------------------------------------
 
     function gameLoop() {
-  
-
 //SPAWNING Bubbles		
 //create an interval to keep adding Bubbles  to the array  
 	if(!bubbleId && gameStarted){
@@ -69,6 +70,7 @@ bubblesArray.forEach((eachBubble) => {
 	eachBubble.draw();
 	eachBubble.move();
 	checkCollision(player, eachBubble)
+	
     //console.log('this is the each bubble', eachBubble)
 });
 
@@ -81,27 +83,46 @@ laserArray.forEach((eachLaser) => {
 } // Game loop ends here -------------------------------------------------------------------------------------
 
 
+function checkCollisionLaser(){
+	for(let i=0;i<bubblesArray.length;i++){
+		 for(let j=0;j<laserArray.length;j++){
+			 if(!bubblesArray[i]) continue;
+			 
+			 if(laserArray[j].y <= bubblesArray[i].y + bubbleImg.height && laserArray[j].y >= bubblesArray[i].y){
+				 if( (laserArray[j].x >= bubblesArray[i].x && laserArray[j].x <= bubblesArray[i].x + bubbleImg.width) || (laserArray[j].x >= bubblesArray[i].x && laserArray[j]  <= bubblesArray[i].x + bubbleImg.width) ){
+					 score.points +=10;
+					 bubblesArray.splice(i, 1);
+					 
+					 laserArray.splice(j, 1);
+				 }
+			 }
+		 }
+	 }
+ } 
+ Collapse
+ 
+ 
 
-
-         function checkCollisionLaser (laser, bubble) {
+    /*function checkCollisionLaser (element, bubble, indexLaser, indexBubble) {
        collision=
-      (laser.x < bubble.x + bubble.width &&
-      laser.x + laser.width > bubble.x &&
-      laser.y < bubble.y + bubble.height &&
-      laser.y + laser.height > bubble.y)
+      (element.x < bubble.x + bubble.width &&
+		element.x + element.width > bubble.x &&
+		element.y < bubble.y + bubble.height &&
+		element.y + element.height > bubble.y)
       if (collision){
-       laserArr.forEach((laser) => {
-       bubblesArray.forEach((bubble) => {
+		   laserArray.splice(indexLaser, 1)
+           bubblesArray.splice(indexBubble, 1)
+
           // remove the bubble
-          const shotDownBobbleIndex = bubblesArray.indexOf(bubble);
-          bubblesArray.splice(shotDownBobbleIndex, 1);
+          //const shotDownBobbleIndex = bubblesArray.indexOf(bubble);
+          //bubblesArray.splice(shotDownBobbleIndex, 1);
           //Increase the score
           //this.score += bubble.score;
         }
-      );
-    });
-  };
-}
+      
+    }*/
+  
+
 
 //checkCollision player vs  bubble 
 function checkCollision (player, bubble) {

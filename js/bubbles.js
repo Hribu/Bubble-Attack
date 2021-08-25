@@ -1,6 +1,6 @@
 
 const bubbleImg = document.createElement('img');
-bubbleImg.src = '/images/bubble.png';
+bubbleImg.src = './images/bubble.png';
 
 class Bubbles {
 	constructor(canvasContext,positionY, speed) {
