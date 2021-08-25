@@ -108,7 +108,7 @@ document.getElementById('start-button').onclick = () => {
 	window.addEventListener('keydown', movePlayer);
 
 	function movePlayer(event) {
-		event.preventDefault();
+		
 		switch (event.keyCode) {
 			case 37:
 				if (player.x > 0) player.x -= 15;
@@ -124,7 +124,7 @@ document.getElementById('start-button').onclick = () => {
 				}
 				else {
 					createLasers();
-					laserId = setInterval(createLasers, 300);
+					laserId = setInterval(createLasers, 500);
 					break;
 				}
 		}
