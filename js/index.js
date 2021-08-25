@@ -24,8 +24,8 @@ window.onload = () => {
 	points: 0,
 	draw: function () {
 		ctx.font = '30px Arial';
-		ctx.fillStyle = 'black';
-		ctx.fillText('Score: ' + this.points, 200, 50);
+		ctx.fillStyle = 'green';
+		ctx.fillText('Score: ' + this.points, 100, 50);
 	}
 };
 	
