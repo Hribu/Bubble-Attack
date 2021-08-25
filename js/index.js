@@ -24,13 +24,7 @@ window.onload = () => {
      
 
 	
-	bubbleId = setInterval(function () {
-		let bubble = new Bubbles(
-			ctx, //canvas context
-			Math.ceil(Math.random() * 1.5) //speed   
-		);
-		bubblesArray.push(bubble);
-	}, 2000); 
+	
 
 	//create laser bullets 
 
@@ -39,9 +33,9 @@ window.onload = () => {
 	laserArray.push(laser)
 	}
 
-	const gameStarted = true // You should write logic and put this under the start button on-click Event
+	gameStarted = false // I write logic and put this under the start button on-click Event to toggle to true 
 
-    //This is where the game logic happens-------------------------------------------------------------
+    //This is where the game logic happens-- Game loop starts here -----------------------------------------------------------
 
     function gameLoop() {
   
@@ -52,11 +46,10 @@ window.onload = () => {
 		bubbleId = setInterval(function () {
 			let bubble = new Bubbles(
 				ctx, //canvas context
-				Math.ceil(Math.random() * 1.5) //speed   
+				Math.ceil(Math.random() * 1) //speed   
 			);
 			bubblesArray.push(bubble);
-		}, 3000); }
-
+		}, 2000); }
 
 	//0- Create a loop to animate the game
 	frameId = requestAnimationFrame(gameLoop);
@@ -70,33 +63,47 @@ window.onload = () => {
 	//2- paint the objects
 	background.draw();
 	player.draw();
-
-	
-	
-	
-	
 	
 //3- Loop through the array and print and move every obstacle
 bubblesArray.forEach((eachBubble) => {
 	eachBubble.draw();
 	eachBubble.move();
 	checkCollision(player, eachBubble)
-
-	//console.log('this is the each bubble', eachBubble)
-	
+    //console.log('this is the each bubble', eachBubble)
 });
-
 
 //4- Loop through the array and print and move every obstacle
 laserArray.forEach((eachLaser) => {
 	eachLaser.drawLaser();
 	eachLaser.moveLaser();
-	//checkCollision(player, eachBubble)
-});
 	
+});
+} // Game loop ends here -------------------------------------------------------------------------------------
 
+
+
+
+         function checkCollisionLaser (laser, bubble) {
+       collision=
+      (laser.x < bubble.x + bubble.width &&
+      laser.x + laser.width > bubble.x &&
+      laser.y < bubble.y + bubble.height &&
+      laser.y + laser.height > bubble.y)
+      if (collision){
+       laserArr.forEach((laser) => {
+       bubblesArray.forEach((bubble) => {
+          // remove the bubble
+          const shotDownBobbleIndex = bubblesArray.indexOf(bubble);
+          bubblesArray.splice(shotDownBobbleIndex, 1);
+          //Increase the score
+          //this.score += bubble.score;
+        }
+      );
+    });
+  };
 }
 
+//checkCollision player vs  bubble 
 function checkCollision (player, bubble) {
 	collision = 
 	(player.x < bubble.x + bubble.width &&         // check left side of element (ship or bullet)
@@ -108,14 +115,18 @@ function checkCollision (player, bubble) {
     if (collision) {
         clearInterval(frameId);
         clearInterval(bubbleId);
-        alert("Game Over");
-        window.location.reload();
+        //alert("Game Over");
+		gameStarted = !gameStarted;
+        //window.location.reload();
       }
 }
+
 
 //Start the game when we click on the start button
 document.getElementById('start-button').onclick = () => {
 	gameLoop();
+	gameStarted = !gameStarted;
+	
 };
 
 
@@ -157,31 +168,6 @@ document.getElementById('start-button').onclick = () => {
 			break;
 		}
 	}
-
-
-	//Add an event listener to shoot 
-	//Keyboard events checker => https://keycode.info/
-
-	/*window.addEventListener('keydown', shoot);
-
-	function shoot(event) {
-		switch (event.keyCode) {
-			case 32:
-				laser.speed += 15;
-				break;
-			default:g
-				break;
-		}
-	}
-*/
-
-
-
-
-
-
-
-
 
 
 
