@@ -20,12 +20,16 @@ window.onload = () => {
    const laserArray = [];
 
      
-
+   const score = {
+	points: 0,
+	draw: function () {
+		ctx.font = '30px Arial';
+		ctx.fillStyle = 'black';
+		ctx.fillText('Score: ' + this.points, 200, 50);
+	}
+};
 	
-	     /*let createLasers = () => { 
-			let laser = new Laser(player, ctx);
-			laserArray.push(laser)
-		 }*/
+	     
 
 	//create laser bullets 
 
@@ -62,6 +66,7 @@ window.onload = () => {
 	//2- paint the objects
 	background.draw();
 	player.draw();
+	score.draw()
 	
 //3- Loop through the array and print and move every obstacle
 bubblesArray.forEach((eachBubble) => {
@@ -91,10 +96,11 @@ function checkCollisionLaser(){
 			 
 			 if(laserArray[j].y <= bubblesArray[i].y + bubbleImg.height && laserArray[j].y >= bubblesArray[i].y){
 				 if( (laserArray[j].x >= bubblesArray[i].x && laserArray[j].x <= bubblesArray[i].x + bubbleImg.width) || (laserArray[j].x >= bubblesArray[i].x && laserArray[j]  <= bubblesArray[i].x + bubbleImg.width) ){
-					 //score.points +=10;
+					 score.points +=10;
 					 console.log( )
 					 bubblesArray.splice(i, 1);
 					 laserArray.splice(j, 1);
+
 				 }
 			 }
 		 }
@@ -137,7 +143,8 @@ function checkCollision (player, bubble) {
     if (collision) {
         clearInterval(frameId);
         clearInterval(bubbleId);
-        alert("Bubbles have destroyed the city!");
+        console.log("Bubbles have destroyed the city!")
+		//alert("Bubbles have destroyed the city!");
 		gameStarted = !gameStarted;
        // window.location.reload();
       }
