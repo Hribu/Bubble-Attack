@@ -39,8 +39,23 @@ window.onload = () => {
 	laserArray.push(laser)
 	}
 
+	const gameStarted = true // You should wrtie logic and put this under the start butto on-click Event
+
     //This is where the game logic happens
+
     function gameLoop() {
+
+
+	if(!bubbleId && gameStarted){
+		bubbleId = setInterval(function () {
+			let bubble = new Bubbles(
+				ctx, //canvas context
+				Math.ceil(Math.random() * 1.5) //speed   
+			);
+			bubblesArray.push(bubble);
+		}, 2000); }
+
+
 	//0- Create a loop to animate the game
 	frameId = requestAnimationFrame(gameLoop);
 
