@@ -18,6 +18,7 @@ window.onload = () => {
 	var explosionSound;
 	let bubbleSound;
 	let backSaund;
+	let loseSaund;
 
 	
 	// let laserSound = new Sound('../sounds/gunm.mp3')
@@ -193,10 +194,12 @@ function checkCollision (player, bubble) {
 		explosionSound = new Sound('./sounds/Explosion.wav')
 		backSaund.stop();
 		explosionSound.play()
+		
 		gameStarted = !gameStarted;
 		loseCondition = true
-		
-        
+		explosionSound.stop(2)
+		//loseSaund = new Sound('./sounds/disappointment.wav')
+		//loseSaund.play()
        // window.location.reload();
       }
 }
