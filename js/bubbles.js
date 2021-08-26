@@ -8,10 +8,10 @@ class Bubbles {
 	  this.ctx = canvasContext
 	  this.width = 70;
 	  this.height = 70;
-	  this.speed = speed;
+	//   this.speed = speed;
 	  this.y = positionY;
-	  this.directionX = Math.random() * 6 - 3;
-	  this.directionY = 1;
+	//   this.directionX = Math.random() * 6 - 3;
+	//   this.directionY = 1;
 	  this.score = 5;
 	}
   

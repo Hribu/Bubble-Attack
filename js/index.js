@@ -2,22 +2,36 @@ window.onload = () => {
 	//We create the canvas and its context
 	const canvas = document.querySelector('canvas');
 	const ctx = canvas.getContext('2d');
+	
 	let frameId = null;
 	let bubbleId = null;
 	let laserId = null;
 	
+	
+	//create an arrays to store bubbles and lasers 
+	let bubblesArray = [];
+	let laserArray = [];
+
 
 	//We create instances of the classes we want to paint in the canvas
 	//using the information we decided on their constructors
 	const background = new Background(ctx);
 	const player = new Player(ctx, canvas.width / 2 - 25, canvas.height - 110);
-	let collision = false
 	
+	
+//create laser bullets 
+
+    function createLasers (){
+	let laser = new Laser(player, ctx);
+	laserArray.push(laser)
+	}
 
 
-//create an arrays to store bubbles and lasers 
-   const bubblesArray = [];
-   const laserArray = [];
+
+   // flags
+   let collision = false;  
+   let hit = false    
+        
 
      
    const score = {
@@ -31,12 +45,7 @@ window.onload = () => {
 	
 	     
 
-	//create laser bullets 
-
-	function createLasers (){
-	let laser = new Laser(player, ctx);
-	laserArray.push(laser)
-	}
+	
 
 	gameStarted = false // I write logic and put this under the start button on-click Event to toggle to true 
 
@@ -49,7 +58,8 @@ window.onload = () => {
 		bubbleId = setInterval(function () {
 			let bubble = new Bubbles(
 				ctx, //canvas context
-				Math.ceil(Math.random() * 1) //speed   
+				// Math.ceil(Math.random() * 1) //position   
+				0
 			);
 			bubblesArray.push(bubble);
 		}, 2000); }
@@ -57,8 +67,8 @@ window.onload = () => {
 	//0- Create a loop to animate the game
 	frameId = requestAnimationFrame(gameLoop);
 
-	//Check if the game is working with a console log
-	//console.log('Game Started');
+	
+	
 
 	//1- Clear the canvas
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -68,43 +78,85 @@ window.onload = () => {
 	player.draw();
 	score.draw()
 	
-//3- Loop through the array and print and move every obstacle
-bubblesArray.forEach((eachBubble) => {
-	eachBubble.draw();
-	eachBubble.move();
-	checkCollision(player, eachBubble)
-	
-	
-    //console.log('this is the each bubble', eachBubble)
-});
+	//3- Loop through the array and print and move every obstacle
+	bubblesArray.forEach((eachBubble) => {
+		eachBubble.draw();
+		eachBubble.move();
+		checkCollision(player, eachBubble)
+		
+		
+		
+	});
+	bubblesArray.filter((eachBubble) => {
+		if (eachBubble.y > canvas.height) {
+			return false
+		}
+		return true
+	})
 
-//4- Loop through the array and print and move every obstacle
-laserArray.forEach((eachLaser) => {
-	eachLaser.drawLaser();
-	eachLaser.moveLaser();
-	checkCollisionLaser()
-	
-	
-});
-} // Game loop ends here -------------------------------------------------------------------------------------
+	//4- Loop through the array and print and move every obstacle
+	laserArray.forEach((eachLaser, i) => {
+		eachLaser.drawLaser();
+		eachLaser.moveLaser();
+		checkCollisionLaser(eachLaser, i)
+		
+	});
+	laserArray.filter((eachLaser) => {
+		if (eachLaser.y < 0) {
+			return false;
+		}
+		return true;
+	})
+} 
+
+// Game loop ends here -------------------------------------------------------------------------------------
+
+/*
+function checkCollisionLaser (element, bubble, indexI, indexJ) {
+	hit = 
+	(element.x < bubble.x + bubble.width &&         // check left side of element (ship or bullet)
+	element.x + element.width > bubble.x &&           // check right side
+	element.y < bubble.y + asteroid.height &&         // check top side
+	element.y + element.height > bubble.y);           // check bottom side
+
+	// if there is a hit, remove the asteroid and bullet from their array
+	if (hit) {
+		laserArray.splice(indexI, 1);
+		bubblesArray.splice(indexJ, 1);
+		hit = false;    // set hit flag back to false
+		score.points +=10;   // increase score
+		//if (score === winScore) {
+    	//winGame();      // if you reach the win score the game finishes
+		}
+};
+*/
 
 
-function checkCollisionLaser(){
+
+
+
+  function checkCollisionLaser(laser, j){
+	let newBubblesArray = bubblesArray.slice();
+	let newLaserArray = laserArray.slice();
 	for(let i=0;i<bubblesArray.length;i++){
-		 for(let j=0;j<laserArray.length;j++){
-			 if(!bubblesArray[i]) continue;
+			 if(!bubblesArray[i]) {
+				 continue;
+			 }
 			 
-			 if(laserArray[j].y <= bubblesArray[i].y + bubbleImg.height && laserArray[j].y >= bubblesArray[i].y){
-				 if( (laserArray[j].x >= bubblesArray[i].x && laserArray[j].x <= bubblesArray[i].x + bubbleImg.width) || (laserArray[j].x >= bubblesArray[i].x && laserArray[j]  <= bubblesArray[i].x + bubbleImg.width) ){
+			 if (laser.y <= bubblesArray[i].y + bubblesArray[i].height && laser.y >= bubblesArray[i].y) {
+				 if (laser.x >= bubblesArray[i].x && laser.x <= bubblesArray[i].x + bubblesArray[i].width) {
 					 score.points +=10;
-					 console.log( )
-					 bubblesArray.splice(i, 1);
-					 laserArray.splice(j, 1);
-
+					 
+					newBubblesArray.splice(i, 1);
+					newLaserArray.splice(j, 1);
+					// bubblesArray.splice(i, 1);
+					// laserArray.splice(j, 1);
+					console.log ("i have a hit ")
 				 }
 			 }
-		 }
 	 }
+	 bubblesArray = newBubblesArray;
+	 laserArray = newLaserArray;
  } 
 
  
