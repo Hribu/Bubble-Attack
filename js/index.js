@@ -191,11 +191,12 @@ function checkCollision (player, bubble) {
         console.log("Bubbles have destroyed the city!")
 		//alert("Bubbles have destroyed the city!");
 		explosionSound = new Sound('./sounds/Explosion.wav')
-						explosionSound.play()
+		backSaund.stop();
+		explosionSound.play()
 		gameStarted = !gameStarted;
 		loseCondition = true
-		sound.pause();
-        sound.currentTime = 0
+		
+        
        // window.location.reload();
       }
 }
