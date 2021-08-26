@@ -8,35 +8,68 @@
     <title>Bobble Attack</title>
   </head>
   <body>
-<!-- Start Page
+<!-- Start Page-->
 <section id="start-page">
-  <div id = "title-box">
-      <img src="./Img/logoTAP.png" id='logo' alt='TAP game Logo'>  
+  <div id = "title-box"> 
       <h1>Welcome,  your chance to save the city </h1>
+      <img src="./images/logo.png" id='logo' >  
   </div>
   <div id="instructions-box">
-      <h2>Distroy   all bubbbles  </h2>
-      <h2>Save the city </h2>
+      <h2>Destroy all bubbles  </h2>
+      <h2>Save the city! </h2>
+      <br />
+    <button id="start-button">StartGame</button>
       <p id="instructions"> Move along the baseline using the arrows  ◀︎ / ▶︎ 
           <br>
-        Shoot to score more points
+        Shoot With W do destroy score more points
       </p>
   </div>
-  <div class="input-container"> -->
-      <div id="game-board">
-      <canvas id="canvas" width="1000" height="600"></canvas>
+  <div class="input-container">
+  </section>
+ <!--Game Page-->
+<section id="game-page">
+  <div id="game-board">
+    <canvas id="canvas" width="1000" height="600" ></canvas>
+  </div>
+  <div class="game-intro">
+    <img src="./images/logo.png" alt="" class="logo-img" />
+    
+    <p>Use the left and right arrow to control the player!</p>
+    <p>Use W to shoot!</p>
+  </div>
+</section>
+    <!-- Game over Page -->
+    <section id="game-over-page">
+      <div id="final-top">
+          <h1>You need to train more to save the city</h1>
+          <h2 id="final-score"></h2>
+      </div>
+      <div id='out'>
+          <img src="--------" id='gameOver' alt='Picture game over'>   
+      </div>
+      <div id="final-bottom" class="final-bottom">
+          <button id="restartLose" class="button">Try again?</button>
+      </div>
+  </section>
+  <!--Game Winning Page-->
+<section id="game-winning-page">
+    <div id="win-top">
+        <h1>You save the city </h1>
     </div>
-    <div class="game-intro">
-      <img src="./images/logo.png" alt="" class="logo-img" />
-      <br />
-      <button id="start-button">StartGame</button>
-      <p>Use the left and right arrow to control the player!</p>
-      <p>Use W to shoot!</p>
+    <div id='winning'>
+        <img src="./images/marveltrophy.png" id='trophy' alt='Thanos gauntlet'>
     </div>
-    <script type="text/javascript" src ="./js/laser.js"></script>
+    <div>
+    <button id="restartWin" class="button final-bottom">Try again?</button>
+    </div>
+</section>
+<!--Adding the scripts-->
+  
+   <script type="text/javascript" src ="./js/laser.js"></script>
     <script type="text/javascript" src ="./js/player.js"></script>
     <script type="text/javascript" src ="./js/background.js"></script>
     <script type="text/javascript" src ="./js/bubbles.js"></script>
+     <script type="text/javascript" src ="./js/sound.js"></script>
      <script type="text/javascript" src="./js/index.js"></script>
   </body>
 </html>

@@ -1,12 +1,21 @@
 window.onload = () => {
 	//We create the canvas and its context
+	const gamePage = document.getElementById('game-page')
+	const startPage = document.getElementById('start-page')
+	const losePage = document.getElementById('game-over-page')
+	const winPage = document.getElementById('game-winning-page')
+
+	const tryAgainBtnLose = document.getElementById('restartLose')
+	const tryAgainBtnWin = document.getElementById('restartWin')
+
 	const canvas = document.querySelector('canvas');
 	const ctx = canvas.getContext('2d');
 	
 	let frameId = null;
 	let bubbleId = null;
 	let laserId = null;
-	
+	var laserSound;
+	// let laserSound = new Sound('../sounds/gunm.mp3')
 	
 	//create an arrays to store bubbles and lasers 
 	let bubblesArray = [];
@@ -46,10 +55,31 @@ window.onload = () => {
 	     
 
 	
-
-	gameStarted = false // I write logic and put this under the start button on-click Event to toggle to true 
+	let loseCondition = false
+	let gameStarted = false // I write logic and put this under the start button on-click Event to toggle to true 
 
     //This is where the game logic happens-- Game loop starts here -----------------------------------------------------------
+    // WIN CONDITION CHECKER FUNCTION
+    function checkWin() {
+ 		if(score.points >= 20){
+			gamePage.style.display='none';
+			winPage.style.display='flex';    
+			clearInterval(frameId);
+        	clearInterval(bubbleId);
+ 		}
+        
+    }
+
+    // LOSING FUNCTION
+    function playerLost() {
+		if(loseCondition){
+				gamePage.style.display='none';
+				losePage.style.display='flex'
+		}
+     
+
+    }
+
 
     function gameLoop() {
 //SPAWNING Bubbles		
@@ -76,7 +106,9 @@ window.onload = () => {
 	//2- paint the objects
 	background.draw();
 	player.draw();
-	score.draw()
+	score.draw();
+	playerLost();
+	checkWin() 
 	
 	//3- Loop through the array and print and move every obstacle
 	bubblesArray.forEach((eachBubble) => {
@@ -107,34 +139,14 @@ window.onload = () => {
 		}
 		return true;
 	})
+
 } 
 
 // Game loop ends here -------------------------------------------------------------------------------------
 
-/*
-function checkCollisionLaser (element, bubble, indexI, indexJ) {
-	hit = 
-	(element.x < bubble.x + bubble.width &&         // check left side of element (ship or bullet)
-	element.x + element.width > bubble.x &&           // check right side
-	element.y < bubble.y + asteroid.height &&         // check top side
-	element.y + element.height > bubble.y);           // check bottom side
-
-	// if there is a hit, remove the asteroid and bullet from their array
-	if (hit) {
-		laserArray.splice(indexI, 1);
-		bubblesArray.splice(indexJ, 1);
-		hit = false;    // set hit flag back to false
-		score.points +=10;   // increase score
-		//if (score === winScore) {
-    	//winGame();      // if you reach the win score the game finishes
-		}
-};
-*/
 
 
-
-
-
+//checkCollision laser vs  bubble 
   function checkCollisionLaser(laser, j){
 	let newBubblesArray = bubblesArray.slice();
 	let newLaserArray = laserArray.slice();
@@ -149,8 +161,7 @@ function checkCollisionLaser (element, bubble, indexI, indexJ) {
 					 
 					newBubblesArray.splice(i, 1);
 					newLaserArray.splice(j, 1);
-					// bubblesArray.splice(i, 1);
-					// laserArray.splice(j, 1);
+					
 					console.log ("i have a hit ")
 				 }
 			 }
@@ -158,30 +169,6 @@ function checkCollisionLaser (element, bubble, indexI, indexJ) {
 	 bubblesArray = newBubblesArray;
 	 laserArray = newLaserArray;
  } 
-
- 
- 
-
-    /*function checkCollisionLaser (element, bubble, indexLaser, indexBubble) {
-       collision=
-      (element.x < bubble.x + bubble.width &&
-		element.x + element.width > bubble.x &&
-		element.y < bubble.y + bubble.height &&
-		element.y + element.height > bubble.y)
-      if (collision){
-		   laserArray.splice(indexLaser, 1)
-           bubblesArray.splice(indexBubble, 1)
-
-          // remove the bubble
-          //const shotDownBobbleIndex = bubblesArray.indexOf(bubble);
-          //bubblesArray.splice(shotDownBobbleIndex, 1);
-          //Increase the score
-          //this.score += bubble.score;
-        }
-      
-    }*/
-  
-
 
 //checkCollision player vs  bubble 
 function checkCollision (player, bubble) {
@@ -198,6 +185,7 @@ function checkCollision (player, bubble) {
         console.log("Bubbles have destroyed the city!")
 		//alert("Bubbles have destroyed the city!");
 		gameStarted = !gameStarted;
+		loseCondition = true
        // window.location.reload();
       }
 }
@@ -207,9 +195,23 @@ function checkCollision (player, bubble) {
 document.getElementById('start-button').onclick = () => {
 	gameLoop();
 	gameStarted = !gameStarted;
-	
+	// this.winnerPage.style.display = 'flex'
+	gamePage.style.display='flex'
+	startPage.style.display='none'
 };
 
+tryAgainBtnLose.onclick = () => {
+		window.location.reload();
+		// gamePage.style.display='flex';
+		// losePage.style.display='none';
+		// gameLoop();
+};
+tryAgainBtnWin.onclick = () => {
+		window.location.reload();
+		// gamePage.style.display='flex';
+		// losePage.style.display='none';
+		// gameLoop();
+};
 
 //Add an event listener to move the player with the arrow keys
 	//Keyboard events checker => https://keycode.info/
@@ -235,6 +237,8 @@ document.getElementById('start-button').onclick = () => {
 				else {
 					createLasers();
 					laserId = setInterval(createLasers, 500);
+					laserSound = new Sound('./sounds/gunm.mp3')
+					laserSound.play()
 					break;
 				}
 		}

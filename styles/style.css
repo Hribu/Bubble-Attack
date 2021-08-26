@@ -1,3 +1,19 @@
+/* start-page
+game-page
+game-over-page
+game-winning-page */
+
+#game-page{
+ display: none;
+}
+#game-over-page{
+ display: none;
+}
+#game-winning-page{
+ display: none;
+}
+
+
 
 body {
   padding: 0;
@@ -19,8 +35,6 @@ body {
   padding: 50px 0px
   
 }
-
-
 
 body button {
   font-size: 30px;
@@ -47,4 +61,75 @@ canvas {
   border: 8px solid white;
   margin: 10px 50px 10px 10px;
   padding: 0
+}
+
+#instructions-box,
+h1{
+    text-align: center;
+
+}
+
+#instructions-box{
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+}
+
+h2{
+    font-size: 24px;
+    margin-bottom: 30px;;
+    text-align: center;
+}
+
+p{
+    font-size: 22px;
+}
+
+.input-container{
+  text-align: center;
+  display: flow-root;
+  justify-content:space-evenly;
+}
+
+#gameOver{
+    
+  margin-right: 50px;
+}
+
+#out{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.final-bottom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  
+}
+
+#restartLose{
+  margin-left: 50px;
+}
+
+
+#game-board{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#win-top{
+  display: block;
+}
+
+#winning{
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
 }
