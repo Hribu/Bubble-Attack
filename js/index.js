@@ -15,6 +15,8 @@ window.onload = () => {
 	let bubbleId = null;
 	let laserId = null;
 	var laserSound;
+	var explosionSound;
+	let bubbleSound;
 	// let laserSound = new Sound('../sounds/gunm.mp3')
 	
 	//create an arrays to store bubbles and lasers 
@@ -52,16 +54,13 @@ window.onload = () => {
 	}
 };
 	
-	     
-
-	
 	let loseCondition = false
 	let gameStarted = false // I write logic and put this under the start button on-click Event to toggle to true 
 
     //This is where the game logic happens-- Game loop starts here -----------------------------------------------------------
     // WIN CONDITION CHECKER FUNCTION
     function checkWin() {
- 		if(score.points >= 20){
+ 		if(score.points >= 50){
 			gamePage.style.display='none';
 			winPage.style.display='flex';    
 			clearInterval(frameId);
@@ -161,7 +160,8 @@ window.onload = () => {
 					 
 					newBubblesArray.splice(i, 1);
 					newLaserArray.splice(j, 1);
-					
+					bubbleSound = new Sound('./sounds/explosionBubble.wav')
+						bubbleSound.play()
 					console.log ("i have a hit ")
 				 }
 			 }
@@ -184,6 +184,8 @@ function checkCollision (player, bubble) {
         clearInterval(bubbleId);
         console.log("Bubbles have destroyed the city!")
 		//alert("Bubbles have destroyed the city!");
+		explosionSound = new Sound('./sounds/Explosion.wav')
+						explosionSound.play()
 		gameStarted = !gameStarted;
 		loseCondition = true
        // window.location.reload();
