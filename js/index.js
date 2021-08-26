@@ -95,7 +95,7 @@ window.onload = () => {
 				0
 				);
 			bubblesArray.push(bubble);
-		}, 1750); }
+		}, 1500); }
 
 	//0- Create a loop to animate the game
 	frameId = requestAnimationFrame(gameLoop);
@@ -233,7 +233,7 @@ tryAgainBtnWin.onclick = () => {
 		// gameLoop();
 };
 
-//Add an event listener to move the player with the arrow keys
+     //Add an event listener to move the player with the arrow keys
 	//Keyboard events checker => https://keycode.info/
 
 	window.addEventListener('keydown', movePlayer);
