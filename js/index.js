@@ -176,10 +176,10 @@ window.onload = () => {
 //checkCollision player vs  bubble 
 function checkCollision (player, bubble) {
 	collision = 
-	(player.x < bubble.x + bubble.width &&         // check left side of element (ship or bullet)
-	player.x + player.width > bubble.x &&           // check right side
-	player.y < bubble.y + bubble.height &&         // check top side
-	player.y + player.height > bubble.y);           // check bottom side
+	(player.x < bubble.x + bubble.width-25 &&         // check left side of element (ship or bullet)
+	player.x + player.width-25 > bubble.x &&           // check right side
+	player.y < bubble.y + bubble.height-25 &&         // check top side
+	player.y + player.height-25 > bubble.y);           // check bottom side
 
 	// IMPORTANT: if the ship crashes the game is Over
     if (collision) {
