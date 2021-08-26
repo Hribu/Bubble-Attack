@@ -5,6 +5,7 @@ game-winning-page */
 
 #game-page{
  display: none;
+ float:center;
 }
 #game-over-page{
  display: none;
@@ -22,13 +23,14 @@ body {
 }
 
 .game-intro {
-  float: left;
+ 
   padding: 0% 0%;
 }
 
 .game-intro p {
   font-size: 16px;
   font-family: "Verdana"
+  
 }
 
 .logo-img {
@@ -49,7 +51,7 @@ body button {
 }
 
 #game-board {
-    float: right;
+    float:center;
     padding: 0px 0px;
 }
 

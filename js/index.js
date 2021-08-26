@@ -19,51 +19,7 @@ window.onload = () => {
 	let bubbleSound;
 	let backSaund;
 	let loseSaund;
- //------------------------------------------------------------------
-
- /*const testImg = document.createElement('img');
- testImg.src = './images/bubble.png';
-
-
-
-
- var ball = {
-	x: 100,
-	y: 100,
-	vx: 5,
-	vy: 2,
-	//radius: 25,
-	//color: '#2e7d32',
-	draw: function() {
-		ctx.drawImage(testImg, this.x, this.y, 70, 70)
-	}
-  };
-  
-  
-  
-  function update() {
-	ctx.clearRect(0,0, canvas.width, canvas.height);
-	ball.draw();
-	ball.x += ball.vx;
-	ball.y += ball.vy;
-	if (ball.y + ball.vy > canvas.height || ball.y + ball.vy < 0) {
-	ball.vy *= -1;
-  }
-  if (ball.x + ball.vx > canvas.width || ball.x + ball.vx < 0) {
-	ball.vx *= -1;
-  }
-  }
-  
-  setInterval(update, 20) */
-  
-
-
-
-
-
-	
-	
-	
+ 
 	//create an arrays to store bubbles and lasers 
 	let bubblesArray = [];
 	let laserArray = [];
@@ -107,7 +63,7 @@ window.onload = () => {
     
     // WIN CONDITION CHECKER FUNCTION
     function checkWin() {
- 		if(score.points >= 100){
+ 		if(score.points >= 200){
 			gamePage.style.display='none';
 			winPage.style.display='flex';    
 			clearInterval(frameId);
@@ -136,12 +92,10 @@ window.onload = () => {
 		bubbleId = setInterval(function () {
 			let bubble = new Bubbles(
 				ctx, //canvas context
-				// Math.ceil(Math.random() * 1) //position 
-				
 				0
-			);
+				);
 			bubblesArray.push(bubble);
-		}, 3000); }
+		}, 2000); }
 
 	//0- Create a loop to animate the game
 	frameId = requestAnimationFrame(gameLoop);
@@ -165,13 +119,7 @@ window.onload = () => {
 		eachBubble.draw();
 		console.log( "new console log Test")
 		eachBubble.move();
-        //setInterval(move, 20) 
-
-		checkCollision(player, eachBubble)
-		
-		
-		
-		
+		checkCollision(player, eachBubble)	
 	});
 	bubblesArray.filter((eachBubble) => {
 		if (eachBubble.y > canvas.height) {
