@@ -8,6 +8,7 @@ game-winning-page */
 }
 #game-over-page{
  display: none;
+ text-align: center;
 }
 #game-winning-page{
  display: none;
@@ -80,7 +81,7 @@ h1 {
 
 h2{
     font-size: 24px;
-    margin-bottom: 30px;;
+    margin-bottom: 10px;;
     text-align: center;
 }
 
@@ -97,6 +98,7 @@ p{
 #gameOver{
     
   margin-right: 50px;
+  text-align: center;
 }
 
 #out{

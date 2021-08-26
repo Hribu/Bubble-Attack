@@ -194,6 +194,8 @@ function checkCollision (player, bubble) {
 						explosionSound.play()
 		gameStarted = !gameStarted;
 		loseCondition = true
+		sound.pause();
+        sound.currentTime = 0
        // window.location.reload();
       }
 }
@@ -201,7 +203,7 @@ function checkCollision (player, bubble) {
 
 //Start the game when we click on the start button
 document.getElementById('start-button').onclick = () => {
-	backSaund = new Sound('./sounds/Spinning-Monkeys.mp3')
+	backSaund = new Sound('./sounds/chase.mp3')
 	backSaund.play()
 	gameLoop();
 	gameStarted = !gameStarted;
