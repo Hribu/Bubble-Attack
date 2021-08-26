@@ -17,6 +17,9 @@ window.onload = () => {
 	var laserSound;
 	var explosionSound;
 	let bubbleSound;
+	let backSaund;
+
+	
 	// let laserSound = new Sound('../sounds/gunm.mp3')
 	
 	//create an arrays to store bubbles and lasers 
@@ -57,7 +60,7 @@ window.onload = () => {
 	let loseCondition = false
 	let gameStarted = false // I write logic and put this under the start button on-click Event to toggle to true 
 
-    //This is where the game logic happens-- Game loop starts here -----------------------------------------------------------
+    
     // WIN CONDITION CHECKER FUNCTION
     function checkWin() {
  		if(score.points >= 50){
@@ -79,15 +82,17 @@ window.onload = () => {
 
     }
 
-
+//This is where the game logic happens-- Game loop starts here -----------------------------------------------------------
     function gameLoop() {
 //SPAWNING Bubbles		
 //create an interval to keep adding Bubbles  to the array  
+    
 	if(!bubbleId && gameStarted){
 		bubbleId = setInterval(function () {
 			let bubble = new Bubbles(
 				ctx, //canvas context
-				// Math.ceil(Math.random() * 1) //position   
+				// Math.ceil(Math.random() * 1) //position 
+				
 				0
 			);
 			bubblesArray.push(bubble);
@@ -114,6 +119,7 @@ window.onload = () => {
 		eachBubble.draw();
 		eachBubble.move();
 		checkCollision(player, eachBubble)
+		
 		
 		
 		
@@ -195,15 +201,19 @@ function checkCollision (player, bubble) {
 
 //Start the game when we click on the start button
 document.getElementById('start-button').onclick = () => {
+	backSaund = new Sound('./sounds/Spinning-Monkeys.mp3')
+	backSaund.play()
 	gameLoop();
 	gameStarted = !gameStarted;
 	// this.winnerPage.style.display = 'flex'
 	gamePage.style.display='flex'
 	startPage.style.display='none'
+	
 };
 
 tryAgainBtnLose.onclick = () => {
 		window.location.reload();
+		
 		// gamePage.style.display='flex';
 		// losePage.style.display='none';
 		// gameLoop();
