@@ -19,9 +19,50 @@ window.onload = () => {
 	let bubbleSound;
 	let backSaund;
 	let loseSaund;
+ //------------------------------------------------------------------
+
+ /*const testImg = document.createElement('img');
+ testImg.src = './images/bubble.png';
+
+
+
+
+ var ball = {
+	x: 100,
+	y: 100,
+	vx: 5,
+	vy: 2,
+	//radius: 25,
+	//color: '#2e7d32',
+	draw: function() {
+		ctx.drawImage(testImg, this.x, this.y, 70, 70)
+	}
+  };
+  
+  
+  
+  function update() {
+	ctx.clearRect(0,0, canvas.width, canvas.height);
+	ball.draw();
+	ball.x += ball.vx;
+	ball.y += ball.vy;
+	if (ball.y + ball.vy > canvas.height || ball.y + ball.vy < 0) {
+	ball.vy *= -1;
+  }
+  if (ball.x + ball.vx > canvas.width || ball.x + ball.vx < 0) {
+	ball.vx *= -1;
+  }
+  }
+  
+  setInterval(update, 20) */
+  
+
+
+
+
 
 	
-	// let laserSound = new Sound('../sounds/gunm.mp3')
+	
 	
 	//create an arrays to store bubbles and lasers 
 	let bubblesArray = [];
@@ -39,6 +80,8 @@ window.onload = () => {
     function createLasers (){
 	let laser = new Laser(player, ctx);
 	laserArray.push(laser)
+	laserSound = new Sound('./sounds/gunm.mp3')
+					laserSound.play()
 	}
 
 
@@ -64,7 +107,7 @@ window.onload = () => {
     
     // WIN CONDITION CHECKER FUNCTION
     function checkWin() {
- 		if(score.points >= 50){
+ 		if(score.points >= 100){
 			gamePage.style.display='none';
 			winPage.style.display='flex';    
 			clearInterval(frameId);
@@ -78,6 +121,7 @@ window.onload = () => {
 		if(loseCondition){
 				gamePage.style.display='none';
 				losePage.style.display='flex'
+				winPage.style.display="none"
 		}
      
 
@@ -97,7 +141,7 @@ window.onload = () => {
 				0
 			);
 			bubblesArray.push(bubble);
-		}, 2000); }
+		}, 3000); }
 
 	//0- Create a loop to animate the game
 	frameId = requestAnimationFrame(gameLoop);
@@ -114,11 +158,15 @@ window.onload = () => {
 	score.draw();
 	playerLost();
 	checkWin() 
+	//ball.draw();
 	
 	//3- Loop through the array and print and move every obstacle
 	bubblesArray.forEach((eachBubble) => {
 		eachBubble.draw();
+		console.log( "new console log Test")
 		eachBubble.move();
+        //setInterval(move, 20) 
+
 		checkCollision(player, eachBubble)
 		
 		
@@ -194,13 +242,19 @@ function checkCollision (player, bubble) {
 		explosionSound = new Sound('./sounds/Explosion.wav')
 		backSaund.stop();
 		explosionSound.play()
-		
+		loseSaund = new Sound('./sounds/lose3.wav')
+		setTimeout(()=>{
+			explosionSound.stop();
+			loseSaund.play()
+		}, 1000)
+		gameStarted = !gameStarted;
+		setTimeout(()=>{
+			loseSaund.stop()
+		}, 8000)
 		gameStarted = !gameStarted;
 		loseCondition = true
-		explosionSound.stop(2)
-		//loseSaund = new Sound('./sounds/disappointment.wav')
-		//loseSaund.play()
-       // window.location.reload();
+		   // window.location.reload();
+		   bubblesArray = []
       }
 }
 
@@ -254,9 +308,7 @@ tryAgainBtnWin.onclick = () => {
 				}
 				else {
 					createLasers();
-					laserId = setInterval(createLasers, 500);
-					laserSound = new Sound('./sounds/gunm.mp3')
-					laserSound.play()
+					laserId = setInterval(createLasers, 300);
 					break;
 				}
 		}

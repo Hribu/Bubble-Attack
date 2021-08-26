@@ -8,8 +8,8 @@ class Player {
         this.image = playerImg,
         this.x = positionX,
         this.y = positionY,
-        this.width = 100,
-        this.height = 100,
+        this.width = 80,
+        this.height = 80,
         this.accelerationX = 0,
         this.accelerationY = 0;
     }
@@ -23,26 +23,17 @@ class Player {
 
 //movement for spaceship
 moveLeft = () => {
-    this.accelerationX = -1.1;
+    this.accelerationX = -1.3;
   };
 
   moveRight = () => {
-    this.accelerationX = 1.1;
+    this.accelerationX = 1.3;
   };
   stopX = () => {
-    this.accelerationX = 0;
+    this.accelerationX = 0.5;
   };
-
-  moveUp = () => {
-    this.accelerationY = -1.1;
-  };
-
-  moveDown = () => {
-    this.accelerationY = 1.1;
-  };
-
   stopY = () => {
-    this.accelerationY = 0;
+    this.accelerationY = 0.5;
   };
 }
 
