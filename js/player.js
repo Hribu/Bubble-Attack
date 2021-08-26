@@ -10,8 +10,8 @@ class Player {
         this.y = positionY,
         this.width = 80,
         this.height = 80,
-        this.accelerationX = 0,
-        this.accelerationY = 0;
+        this.accelerationX = 100,
+        this.accelerationY = 100;
     }
 
     draw(){
@@ -23,17 +23,17 @@ class Player {
 
 //movement for spaceship
 moveLeft = () => {
-    this.accelerationX = -1.3;
+    this.accelerationX = -0;
   };
 
   moveRight = () => {
-    this.accelerationX = 1.3;
+    this.accelerationX = 0;
   };
   stopX = () => {
-    this.accelerationX = 0.5;
+    this.accelerationX = 1;
   };
   stopY = () => {
-    this.accelerationY = 0.5;
+    this.accelerationY = 1;
   };
 }
 

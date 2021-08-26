@@ -294,11 +294,11 @@ tryAgainBtnWin.onclick = () => {
 		event.preventDefault();
 		switch (event.keyCode) {
 			case 37:
-				if (player.x > 0) player.x -= 15;
+				if (player.x > 0) player.x -= 25;
 				break;
 
 			case 39:
-				if (player.x < canvas.width - player.width) player.x += 15;
+				if (player.x < canvas.width - player.width) player.x += 25;
 				break;
 
 			case 87:
