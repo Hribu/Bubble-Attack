@@ -95,7 +95,7 @@ window.onload = () => {
 				0
 				);
 			bubblesArray.push(bubble);
-		}, 2000); }
+		}, 1750); }
 
 	//0- Create a loop to animate the game
 	frameId = requestAnimationFrame(gameLoop);
@@ -242,11 +242,11 @@ tryAgainBtnWin.onclick = () => {
 		event.preventDefault();
 		switch (event.keyCode) {
 			case 37:
-				if (player.x > 0) player.x -= 25;
+				if (player.x > 0) player.x -= 20;
 				break;
 
 			case 39:
-				if (player.x < canvas.width - player.width) player.x += 25;
+				if (player.x < canvas.width - player.width) player.x += 20;
 				break;
 
 			case 87:

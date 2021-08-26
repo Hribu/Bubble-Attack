@@ -10,8 +10,8 @@ class Player {
         this.y = positionY,
         this.width = 80,
         this.height = 80,
-        this.accelerationX = 100,
-        this.accelerationY = 100;
+        this.accelerationX = 0,
+        this.accelerationY = 0;
     }
 
     draw(){

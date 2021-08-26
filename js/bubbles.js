@@ -35,10 +35,10 @@ class Bubbles {
 		this.draw();
 		this.x += this.vx;
 		this.y += this.vy;
-		if (this.y + this.vy > canvas.height || this.y + this.vy < 0) {
+		if (this.y + this.vy > canvas.height-65 || this.y + this.vy < 0) {
 		this.vy *= -1;
 	  }
-	  if (this.x + this.vx > canvas.width || this.x + this.vx < 0) {
+	  if (this.x + this.vx > canvas.width-65 || this.x + this.vx < 0) {
 		this.vx *= -1;
 	  }
 	  }
