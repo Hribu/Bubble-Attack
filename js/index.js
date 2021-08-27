@@ -66,6 +66,7 @@ window.onload = () => {
 			winPage.style.display='flex';    
 			clearInterval(frameId);
         	clearInterval(bubbleId);
+			 let bubbleId = null
  		}
         
     }
