@@ -6,31 +6,26 @@
 ## Description
 Do you want to save the world ?? 
 
-In the game, players must finish a round-the-world quest to destroy bouncing balloons that are terrorising several of Earth's landmarks and cities. 
-You need to move on the chorizontally in order to shoot the bubbles . The more bubbles you  shoot  the more points you will earn. If a ball toch you you will day and the city will be lost .
-
-Distroy all the Bubbles to save the Earth!
+In the game, players must finish a round-the-world quest to destroy bouncing balloons that are terrorize several of Earth's landmarks and cities. 
+You have to move horizontally to shoot bubbles. The more bubbles you draw, the more points you will earn. If you touch a bubble, you will explode and the city will be lost.
+Destroy all the Bubbles to save the City!
 
 
 ## MVP
 * The User player moves horizontally at the bottom of the screen
-* The computer player throws from random places the ball to the User player
-* Every time User player catches the ball the other player throws another pass
-* Every caught pass increases the score by 10 points
-* If the User player doesn't catch the ball, the game ends
+* The computer generate bubbles from random places that are coming down from all directions.
+* Each destroyed bubble increases the score by 10 points
+ * Each destroyed bubble increases the score by 10 points
 
 
 ## Backlog
-* Choose between different players to play the game
-* Different types of balls with different scoring points for each
-* Gatorade (Energy system) - refuels health catching the drinks to remain more in the game
-* High Scores shown at the end of the game (Starting Five)
-* Ranking score (level 1: noob, ... last level: you're the G.O.A.T)
+* Bounce the bubbles when they hit the walls
+
 
 
 ## Data structure
 
-## main.js
+## index.js
 - splashScreen(){}
 - gameScreen () {}
 - gameoverScreen () {}
@@ -45,22 +40,15 @@ Distroy all the Bubbles to save the Earth!
 * clearCanvas (){}
 * GameOver(){}
 
-## userPlayer.js
+## player.js
 
 * player(){x, y, direction, size}
 * draw(){}
 * move(){}
-* catchPass(){}
-* checkScreenCollision(){}
+* checkCollision(){}
 
-## cpuPlayer.js
 
-* player(){x, y, direction, size}
-* draw(){}
-* move(){}
-* throwPass(){}
-
-## ball.js
+## bubbles.js
 * draw(){}
 * move(){}
 * checkCollision(){}
@@ -87,10 +75,11 @@ Distroy all the Bubbles to save the Earth!
 * game - drawCanvas
 * UserPlayer - draw
 * UserPlayer - move
-* CpuPlayer - draw
-* CpuPlayer - move
-* Ball - draw
-* CpuPlayer - throwsBall
+* bubbles - draw
+* bubbles - move
+* laser - draw
+* laser - move
+* 
 * game - checkCollision(){}
 * game - GameOver
 * game - addEventListener
