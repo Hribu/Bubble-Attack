@@ -40,8 +40,6 @@ window.onload = () => {
 					laserSound.play()
 	}
 
-
-
    // flags
    let collision = false;  
    let hit = false    
@@ -63,7 +61,7 @@ window.onload = () => {
     
     // WIN CONDITION CHECKER FUNCTION
     function checkWin() {
- 		if(score.points >= 200){
+ 		if(score.points >= 10){
 			gamePage.style.display='none';
 			winPage.style.display='flex';    
 			clearInterval(frameId);
@@ -100,7 +98,6 @@ window.onload = () => {
 	//0- Create a loop to animate the game
 	frameId = requestAnimationFrame(gameLoop);
 
-	
 	
 
 	//1- Clear the canvas
