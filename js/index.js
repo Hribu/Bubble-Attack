@@ -61,7 +61,7 @@ window.onload = () => {
     
     // WIN CONDITION CHECKER FUNCTION
     function checkWin() {
- 		if(score.points >= 10){
+ 		if(score.points >= 250){
 			gamePage.style.display='none';
 			winPage.style.display='flex';    
 			clearInterval(frameId);
