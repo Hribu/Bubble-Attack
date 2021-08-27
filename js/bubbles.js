@@ -25,11 +25,6 @@ class Bubbles {
   
 	//move bubble
 
-
-	//move() {
-	//	this.y += 3;
-	//}
-
 	    move() {
 		//this.ctx.clearRect(0,0, canvas.width, canvas.height);
 		this.draw();
