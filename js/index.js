@@ -14,8 +14,8 @@ window.onload = () => {
 	let frameId = null;
 	let bubbleId = null;
 	let laserId = null;
-	var laserSound;
-	var explosionSound;
+	let laserSound;
+	let explosionSound;
 	let bubbleSound;
 	let backSaund;
 	let loseSaund;
@@ -94,7 +94,7 @@ window.onload = () => {
 				0
 				);
 			bubblesArray.push(bubble);
-		}, 1500); }
+		}, 1000); }
 
 	//0- Create a loop to animate the game
 	frameId = requestAnimationFrame(gameLoop);

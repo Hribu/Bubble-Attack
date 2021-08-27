@@ -10,7 +10,7 @@ class Bubbles {
 	  this.height = 70;
 	  this.speed = 1.5;
 	  this.y = positionY;
-	  this.vx = .5;
+	  this.vx = .75;
 	  this.vy =2;
 	  
 	//   this.directionX = Math.random() * 6 - 3;
